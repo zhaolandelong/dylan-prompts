@@ -1,0 +1,116 @@
+<mxfile host="app.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="AI" version="22.0.0" type="device">
+  <diagram id="game-framework" name="游戏框架">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- 事件总线 -->
+        <mxCell id="event_bus" value="事件总线&#10;Command / Event / Query" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="350" y="40" width="380" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- 元游戏容器标注 -->
+        <mxCell id="meta_label" value="元游戏层" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="30" y="150" width="80" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- 关卡 -->
+        <mxCell id="level" value="关卡&#10;(元游戏)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="190" width="130" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 资源 -->
+        <mxCell id="resource" value="资源&#10;(元游戏)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="220" y="190" width="130" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 成长 -->
+        <mxCell id="growth" value="成长&#10;(元游戏)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="380" y="190" width="130" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 收集 -->
+        <mxCell id="collection" value="收集&#10;(元游戏)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="540" y="190" width="130" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 任务 -->
+        <mxCell id="task" value="任务&#10;(元游戏)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="700" y="190" width="130" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 实体属性 -->
+        <mxCell id="entity_attr" value="实体属性 (元游戏)&#10;基础属性 → 最终属性快照" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="340" width="380" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- 核心循环 -->
+        <mxCell id="core_loop" value="核心循环 (非元游戏)&#10;输入：玩家快照 / 敌人快照 / 关卡配置 / 奖励倍数&#10;输出：RunFinished（结果 / 奖励 / 日志）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="260" y="500" width="420" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- 元游戏模块 → 事件总线（订阅/发布） -->
+        <mxCell id="e_level_bus" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#6c8ebf;exitX=0.5;exitY=0;entryX=0;entryY=1;" edge="1" parent="1" source="level" target="event_bus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_resource_bus" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#6c8ebf;exitX=0.5;exitY=0;entryX=0.25;entryY=1;" edge="1" parent="1" source="resource" target="event_bus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_growth_bus" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#6c8ebf;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="growth" target="event_bus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_collection_bus" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#6c8ebf;exitX=0.5;exitY=0;entryX=0.75;entryY=1;" edge="1" parent="1" source="collection" target="event_bus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_task_bus" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#6c8ebf;exitX=0.5;exitY=0;entryX=1;entryY=1;" edge="1" parent="1" source="task" target="event_bus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 成长 / 收集 → 实体属性 -->
+        <mxCell id="e_growth_attr" value="修改基础属性" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#82b366;fontSize=10;fontColor=#333333;exitX=0.5;exitY=1;entryX=0.75;entryY=0;" edge="1" parent="1" source="growth" target="entity_attr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_collection_attr" value="修改基础属性" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#82b366;fontSize=10;fontColor=#333333;exitX=0.5;exitY=1;entryX=0.25;entryY=0;" edge="1" parent="1" source="collection" target="entity_attr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 关卡 → 核心循环 -->
+        <mxCell id="e_level_core" value="关卡配置 / 敌人配置 / 奖励倍数" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#d6b656;fontSize=10;fontColor=#333333;exitX=0.5;exitY=1;entryX=0.25;entryY=0;" edge="1" parent="1" source="level" target="core_loop">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 实体属性 → 核心循环 -->
+        <mxCell id="e_attr_core" value="只读快照" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#82b366;fontSize=10;fontColor=#333333;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="entity_attr" target="core_loop">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 核心循环 → 事件总线 -->
+        <mxCell id="e_core_bus" value="RunFinished" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#b85450;fontSize=10;fontColor=#333333;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="core_loop" target="event_bus">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="940" y="545" />
+              <mxPoint x="940" y="75" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 事件总线 → 资源 -->
+        <mxCell id="e_bus_resource" value="奖励入账" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#6c8ebf;fontSize=10;fontColor=#333333;exitX=0.25;exitY=1;entryX=0.5;entryY=0;dashed=1;" edge="1" parent="1" source="event_bus" target="resource">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 事件总线 → 任务 -->
+        <mxCell id="e_bus_task" value="进度更新" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#6c8ebf;fontSize=10;fontColor=#333333;exitX=0.75;exitY=1;entryX=0.5;entryY=0;dashed=1;" edge="1" parent="1" source="event_bus" target="task">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 事件总线 → 关卡 -->
+        <mxCell id="e_bus_level" value="关卡推进" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#6c8ebf;fontSize=10;fontColor=#333333;exitX=0;exitY=1;entryX=0.5;entryY=0;dashed=1;" edge="1" parent="1" source="event_bus" target="level">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
